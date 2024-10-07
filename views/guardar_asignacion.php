@@ -89,11 +89,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
-
-    // Cerrar el statement
     $stmt->close();
 }
 
-// Finalizar el buffer de salida
 ob_end_flush(); 
 ?>

@@ -159,10 +159,10 @@ $aulas = $resultAulas->fetch_all(MYSQLI_ASSOC);
                 <thead>
                     <tr>
                         <th>ID Asignación</th>
-                        <th>ID Estudiante</th>
-                        <th>ID Materia</th>
-                        <th>ID Docente</th>
-                        <th>ID Aula</th>
+                        <th>Nombre Estudiante</th>
+                        <th>Nombre Materia</th>
+                        <th>Nombre Docente</th>
+                        <th>Nombre Aula</th>
                         <th>Turno</th>
                         <th>Fecha de Asignación</th>
                     </tr>
@@ -172,7 +172,18 @@ $aulas = $resultAulas->fetch_all(MYSQLI_ASSOC);
                     include '../includes/conexion.php';
 
                     // Obtener datos de la tabla asignaciones
-                    $query = "SELECT * FROM asignaciones"; // Asegúrate de que esta consulta sea la que deseas
+                    $query = "SELECT a.id_asignacion, 
+                               e.nombre AS nombre_estudiante, 
+                               m.nombre AS nombre_materia, 
+                               CONCAT(d.nombre, ' ', d.apellido) AS nombre_docente, 
+                               aul.nombre_aula, 
+                               a.turno, 
+                               a.fecha_asignacion 
+                        FROM asignaciones a
+                        JOIN estudiantes e ON a.id_estudiante = e.id_estudiante
+                        JOIN materias m ON a.id_materia = m.id_materia
+                        JOIN docentes d ON a.id_docente = d.id_docente
+                        JOIN aulas aul ON a.id_aula = aul.id_aula"; // Asegúrate de que esta consulta sea la que deseas
                     $result = $conn->query($query);
 
                     if ($result->num_rows > 0) {
@@ -180,10 +191,10 @@ $aulas = $resultAulas->fetch_all(MYSQLI_ASSOC);
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>
                                     <td>{$row['id_asignacion']}</td>
-                                    <td>{$row['id_estudiante']}</td>
-                                    <td>{$row['id_materia']}</td>
-                                    <td>{$row['id_docente']}</td>
-                                    <td>{$row['id_aula']}</td>
+                                    <td>{$row['nombre_estudiante']}</td>
+                                    <td>{$row['nombre_materia']}</td>
+                                    <td>{$row['nombre_docente']}</td>
+                                    <td>{$row['nombre_aula']}</td>
                                     <td>{$row['turno']}</td>
                                     <td>{$row['fecha_asignacion']}</td>
                                   </tr>";
