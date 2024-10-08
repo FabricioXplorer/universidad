@@ -43,12 +43,12 @@ margin: 0 0 20px;
 
 .modal button {
     padding: 10px 20px;
-    background-color: #f44336;
+    background-color: #007bff;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 .modal button:hover {
-    background-color: #d32f2f;
+    background-color: #0056b3;
 }

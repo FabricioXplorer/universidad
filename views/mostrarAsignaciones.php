@@ -2,7 +2,6 @@
 <?php
 include '../includes/conexion.php';
 
-// Consulta para obtener los datos de asignaciones con los nombres correspondientes
 $queryAsignaciones = "SELECT m.nombre AS materia, d.nombre AS nombre_docente, 
                       a.nombre_aula AS aula, asign.turno, asign.fecha_asignacion 
                       FROM asignaciones AS asign 
