@@ -1,36 +1,48 @@
 .navbar-unique {
-    background-color: #007bff;
-    overflow: hidden;
-  }
-  
+  background-color: #007bff;
+  overflow: hidden;
+}
+
+.navbar-unique ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+  justify-content: center; /* Centrar los elementos */
+}
+
+.navbar-unique li {
+  flex: 1 1 auto; /* Permitir que los elementos crezcan y se reduzcan */
+  min-width: 120px; /* Ancho mínimo para los elementos */
+}
+
+.navbar-unique li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+}
+
+.navbar-unique li a:hover {
+  background-color: #4662b2;
+  color: #fff;
+}
+
+.navbar-unique li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
   .navbar-unique ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
+    flex-direction: column; /* Cambiar a una columna en pantallas pequeñas */
   }
-  
+
   .navbar-unique li {
-    float: left;
+    width: 100%; /* Hacer que cada elemento ocupe el ancho completo */
   }
-  
-  .navbar-unique li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-    font-family: Arial, sans-serif;
-  }
-  
-  .navbar-unique li a:hover {
-    background-color: #4662b2;
-    color: #fff;
-  }
-  
-  .navbar-unique li a.active {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
+}
