@@ -7,6 +7,7 @@
     <title>Registro de Estudiante</title>
 </head>
 <body>
+<?php include '../includes/navbar.php'; ?>
     <h1>Registro de Estudiante</h1>
     <form action="guardarEstudiante.php" method="POST" enctype="multipart/form-data">
         <label for="nombre">Nombre:</label>

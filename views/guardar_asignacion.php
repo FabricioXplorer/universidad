@@ -1,27 +1,33 @@
 <?php
 include '../includes/conexion.php';
 
-ob_start(); 
+ob_start();
 
 $mensaje = '';
 $errorMensaje = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $idEstudiante = $_POST['asignar'];
-    $idMateria = $_POST["materia_$idEstudiante"];
-    $idDocente = $_POST["docente_$idEstudiante"];
-    $idAula = $_POST["aula_$idEstudiante"];
-    $turno = $_POST["turno_$idEstudiante"];
-    $fechaAsignacion = $_POST["fecha_asignacion_$idEstudiante"];
+    $idMateria = isset($_POST["materia"]) ? $_POST["materia"] : null;
+    $idDocente = isset($_POST["docente"]) ? $_POST["docente"] : null;
+    $idAula = isset($_POST["aula"]) ? $_POST["aula"] : null;
+    $turno = isset($_POST["turno"]) ? $_POST["turno"] : null;
+    $fechaAsignacion = isset($_POST["fecha_asignacion"]) ? $_POST["fecha_asignacion"] : null;
 
-    // Verificar si el docente ya tiene 3 asignaciones
+
+    if ($idMateria === null || $idDocente === null || $idAula === null || $turno === null || $fechaAsignacion === null) {
+        $mensaje = "Todos los campos son obligatorios.";
+        header("Location: error.php?mensaje=" . urlencode($mensaje));
+        exit;
+    }
+
+
     $queryContarAsignaciones = "
         SELECT COUNT(*) as total_asignaciones
         FROM asignaciones
         WHERE id_docente = ?
     ";
-    
+
     $stmt = $conn->prepare($queryContarAsignaciones);
     $stmt->bind_param('i', $idDocente);
     $stmt->execute();
@@ -31,9 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($data['total_asignaciones'] >= 3) {
         $mensaje = "El docente ya tiene 3 asignaciones y no puede ser asignado nuevamente.";
         header("Location: error.php?mensaje=" . urlencode($mensaje));
-        exit; // Asegúrate de salir después de redirigir
+        exit;
     } else {
-        // Validar si el docente ya está asignado en ese turno para este mes
+
         $queryValidarTurno = "
             SELECT COUNT(*) as total_turno
             FROM asignaciones
@@ -51,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: error.php?mensaje=" . urlencode($mensaje));
             exit;
         } else {
-            // Validar si el docente ya está asignado a esa aula para este mes
+
             $queryValidarAula = "
                 SELECT COUNT(*) as total_aula
                 FROM asignaciones
@@ -69,18 +75,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header("Location: error.php?mensaje=" . urlencode($mensaje));
                 exit;
             } else {
-                // Realizar la inserción
+
                 $queryInsertar = "
-                    INSERT INTO asignaciones (id_estudiante, id_materia, id_docente, id_aula, turno, fecha_asignacion) 
-                    VALUES (?, ?, ?, ?, ?, ?)
+                    INSERT INTO asignaciones (id_materia, id_docente, id_aula, turno, fecha_asignacion) 
+                    VALUES (?, ?, ?, ?, ?)
                 ";
 
                 $stmt = $conn->prepare($queryInsertar);
-                $stmt->bind_param('iiisss', $idEstudiante, $idMateria, $idDocente, $idAula, $turno, $fechaAsignacion);
+                $stmt->bind_param('iiiss', $idMateria, $idDocente, $idAula, $turno, $fechaAsignacion);
                 
                 if ($stmt->execute()) {
                     header("Location: mostrarDatos.php");
-                    exit; // Salir después de redirigir
+                    exit;
                 } else {
                     $mensaje = "Error en la asignación: " . $stmt->error;
                     header("Location: error.php?mensaje=" . urlencode($mensaje));
@@ -92,5 +98,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->close();
 }
 
-ob_end_flush(); 
+ob_end_flush();
 ?>
