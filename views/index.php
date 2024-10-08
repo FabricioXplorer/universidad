@@ -10,14 +10,14 @@
 <?php include '../includes/navbar.php'; ?>
     <h1>Solicitud de Materia</h1>
 
-    <!-- Primer formulario: Solicitud de CI -->
+
     <form id="primer-formulario" action="buscarEstudiantes.php" method="POST" enctype="multipart/form-data" onsubmit="return buscarEstudiante(event)">
         <label for="ci">C.I.:</label>
         <input type="text" id="ci" name="ci" required><br>
         <button type="submit">Solicitar</button>
     </form>
 
-    <!-- Segundo formulario: Mostrar los datos encontrados y completar la solicitud -->
+
     <form id="segundo-formulario" action="solicitudes.php" method="POST" enctype="multipart/form-data" style="display: none;">
         <input type="hidden" id="id_estudiante" name="id_estudiante">
 
@@ -60,13 +60,11 @@
     </form>
 
     <script>
-        // Función para buscar el estudiante y mostrar el segundo formulario
         function buscarEstudiante(event) {
             event.preventDefault();
 
             const ci = document.getElementById('ci').value;
 
-            // Realiza una petición AJAX a PHP para buscar el estudiante
             fetch('buscarEstudiantes.php', {
                 method: 'POST',
                 headers: {
@@ -77,13 +75,12 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Llenar el segundo formulario con los datos del estudiante
+        
                     document.getElementById('id_estudiante').value = data.id_estudiante;
                     document.getElementById('nombre').value = data.nombre;
                     document.getElementById('apellido').value = data.apellido;
                     document.getElementById('carrera').value = data.carrera;
 
-                    // Mostrar el segundo formulario
                     document.getElementById('segundo-formulario').style.display = 'block';
                     document.getElementById('primer-formulario').style.display = 'none';
                 } else {

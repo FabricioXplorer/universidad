@@ -26,17 +26,15 @@
         <select id="id_carrera" name="id_carrera" required>
             <option value="">Seleccionar Carrera</option>
             <?php
-            include '../includes/conexion.php'; // Archivo de conexión a la base de datos
+            include '../includes/conexion.php'; 
 
             $query = "SELECT id_carrera, nombre FROM carrera";
             $result = $conn->query($query);
 
-            // Rellenar el select con los datos de la tabla carrera
             while ($row = $result->fetch_assoc()) {
                 echo "<option value='" . $row['id_carrera'] . "'>" . $row['nombre'] . "</option>";
             }
 
-            // Cerrar la conexión
             $conn->close();
             ?>
         </select><br>

@@ -16,7 +16,7 @@ body {
 
 h1, h2 {
     text-align: center;
-    color: #333;
+    color: #007bff;
     margin: 0 0 20px;
 }
 
@@ -50,7 +50,7 @@ button {
     cursor: pointer;
     display: block;
     margin: 10px auto;
-    transition: background-color 0.3s ease; /* Agregada transición */
+    transition: background-color 0.3s ease; 
 }
 
 button:hover {
@@ -71,17 +71,17 @@ button:hover {
 
 .modal-content {
     background-color: #fefefe;
-    margin: auto; /* Centrar vertical y horizontalmente */
+    margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 100%; /* Ancho del modal */
+    width: 100%; 
     max-width: 700px;
     border-radius: 8px;
-    position: absolute; /* Para centrar */
-    top: 50%; /* Posicionar desde arriba */
-    left: 50%; /* Posicionar desde la izquierda */
-    transform: translate(-50%, -50%); /* Centrar usando transformaciones */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
 }
 
 .close {
@@ -98,7 +98,7 @@ button:hover {
     cursor: pointer;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .container {
         padding: 10px;
@@ -120,6 +120,6 @@ button:hover {
 
     .modal-content {
         width: 90%;
-        margin: auto; /* Centrar */
+        margin: auto; 
     }
 }
