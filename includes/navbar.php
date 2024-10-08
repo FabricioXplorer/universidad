@@ -11,6 +11,7 @@
   <ul>
     <li><a href="../views/mostrarDatos.php">Mostrar Datos</a></li>
     <li><a href="../views/solictudMateria.php">Solicitud Materia</a></li>
+    <li><a href="../views/registroEstudiante.php">Registro Estudiante</a></li>
   </ul>
 </nav>
 </body>
