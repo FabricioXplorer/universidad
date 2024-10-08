@@ -35,6 +35,7 @@ $aulas = $resultAulas->fetch_all(MYSQLI_ASSOC);
     <title>Mostrar Estudiantes</title>
 </head>
 <body>
+<?php include '../includes/navbar.php'; ?>
 
 <h1>Estudiantes</h1>
 

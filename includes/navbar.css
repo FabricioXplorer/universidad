@@ -1,0 +1,36 @@
+.navbar-unique {
+    background-color: #333;
+    overflow: hidden;
+  }
+  
+  .navbar-unique ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar-unique li {
+    float: left;
+  }
+  
+  .navbar-unique li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar-unique li a:hover {
+    background-color: #575757;
+    color: #fff;
+  }
+  
+  .navbar-unique li a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  

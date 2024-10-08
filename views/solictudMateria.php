@@ -7,6 +7,7 @@
     <title>Solicitud Materia</title>
 </head>
 <body>
+<?php include '../includes/navbar.php'; ?>
     <h1>Solicitud de Materia</h1>
 
     <!-- Primer formulario: Solicitud de CI -->
