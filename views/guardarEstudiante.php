@@ -11,19 +11,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["imagen"]["name"]);
 
-    if (move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
-        echo "El archivo ". htmlspecialchars(basename($_FILES["imagen"]["name"])). " ha sido subido.";
-    } else {
-        echo "Error al subir la imagen.";
-    }
 
-    $query = "INSERT INTO estudiantes (nombre, apellido, correo, ci, id_carrera, imagen) VALUES ('$nombre', '$apellido', '$correo', '$ci', '$id_carrera', '$target_file')";
-    
-    if ($conn->query($query) === TRUE) {
-        header("Location: registroEstudiante.php");
+    if (move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
+
+        $query = "INSERT INTO estudiantes (nombre, apellido, correo, ci, id_carrera, imagen) VALUES ('$nombre', '$apellido', '$correo', '$ci', '$id_carrera', '$target_file')";
+        
+        if ($conn->query($query) === TRUE) {
+         
+            echo "<script>
+                    alert('Estudiante registrado correctamente.');
+                    window.location.href = 'registroEstudiante.php'; 
+                  </script>";
+        } else {
+  
+            echo "<script>
+                    alert('Error: " . $conn->error . "');
+                    window.location.href = 'registroEstudiantes.php'; 
+                  </script>";
+        }
     } else {
-        echo "Error: " . $query . "<br>" . $conn->error;
-        echo '<br><a href="registroEstudiantes.php"><button type="button">Volver</button></a>';
+     
+        echo "<script>
+                alert('Error al subir la imagen.');
+                window.location.href = 'registroEstudiantes.php'; 
+              </script>";
     }
 
     $conn->close();
