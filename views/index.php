@@ -11,7 +11,7 @@
     <h1>Solicitud de Materia</h1>
 
     <!-- Primer formulario para ingresar el C.I. -->
-    <form id="primer-formulario" action="buscarEstudiantes.php" method="POST" enctype="multipart/form-data" onsubmit="return buscarEstudiante(event)">
+    <form class="busqueda" id="primer-formulario" action="buscarEstudiantes.php" method="POST" enctype="multipart/form-data" onsubmit="return buscarEstudiante(event)">
         <label for="ci">C.I.:</label>
         <input type="text" id="ci" name="ci" required>
         <button type="submit">Solicitar</button>

@@ -27,7 +27,7 @@ $aulas = $resultAulas->fetch_all(MYSQLI_ASSOC);
 
 <h1>Asignaciones</h1>
 
-<table border="1">
+<table class="formu1" border="1">
     <tr>
         <th>Materia</th>
         <th>Docente</th>
@@ -37,7 +37,7 @@ $aulas = $resultAulas->fetch_all(MYSQLI_ASSOC);
         <th>Acción</th>
     </tr>
     <tr>
-        <form action="guardar_asignacion.php" method="POST">
+        <form class="formu1" action="guardar_asignacion.php" method="POST">
 
             <td>
                 <select name="materia" required>

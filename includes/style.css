@@ -97,8 +97,7 @@ button:hover {
     width: 100%; /* Usar el 100% del ancho en móviles */
 }
 
-.tablaAsign th, .tablaAsign td,
-.tablaSolicitudes th, .tablaSolicitudes td {
+.tablaAsign th, .tablaAsign td{
     border: 1px solid #000;
     padding: 10px;
     text-align: left; 
@@ -120,4 +119,20 @@ button:hover {
 img {
     max-width: 100%;
     height: auto; /* Cambiar a auto para una mejor responsividad */
+}
+.busqueda{
+    width: 80%;
+    
+}
+.formu{
+    width: 70vh;
+}
+.tablaSolicitudes{
+    width: 100%;
+}
+@media (max-width: 600px){
+    .tablaSolicitudes{
+        width: 5%;
+        margin-left: -15px;
+    }
 }

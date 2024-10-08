@@ -9,7 +9,7 @@
 <body>
 <?php include '../includes/navbar.php'; ?>
     <h1>Registro de Estudiante</h1>
-    <form action="guardarEstudiante.php" method="POST" enctype="multipart/form-data">
+    <form class="formu" action="guardarEstudiante.php" method="POST" enctype="multipart/form-data">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required><br>
 
