@@ -93,6 +93,7 @@ button:hover {
 @media (max-width:60px){
 .formu1{
     width: 40%;
+    display: grid;
     
 }
 }
